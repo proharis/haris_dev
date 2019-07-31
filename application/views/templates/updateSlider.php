@@ -1,11 +1,14 @@
+<?php
+if (isset($_SESSION['username'])) {
+    ?>
 <div class="container" style=" background-color: lightsteelblue;">
     <div class="row">
         <form role="form" method="post" action="" class="col-md-9 go-right">
             <h2>Edit your Slider</h2>
             <p><?php print_r($records[0]->slider_id); ?></p>
             <?php
-            echo form_hidden('slider_id', $records[0]->slider_id);
-            ?>
+                echo form_hidden('slider_id', $records[0]->slider_id);
+                ?>
             <div class="form-group">
                 <input id="slider_description" name="slider_description"
                     value="<?php $records[0]->slider_description ?>" type="text"
@@ -28,3 +31,8 @@
 
     </div>
 </div>
+<?php
+} else {
+    redirect('admin_login');
+}
+?>

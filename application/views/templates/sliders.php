@@ -1,3 +1,6 @@
+<?php
+if (isset($_SESSION['username'])) {
+    ?>
 <div class="container">
     <h4 class="d-flex justify-content-center"> Add Slider</h4>
     <div class="d-flex justify-content-center">
@@ -18,23 +21,28 @@
             </thead>
             <tbody>
                 <?php
-                $is = count($sliders);
-                for ($i = 0; $i < $is; $i++) {
-                    echo "<tr>";
-                    echo "<th scope='row'>" . $sliders[$i]->slider_id . "</th>";
-                    echo "<td>" . $sliders[$i]->slider_description . "</td>";
-                    echo "<td>" . $sliders[$i]->slider_status . "</td>";
-                    echo "<td>" . $sliders[$i]->slider_title . "</td>";
-                    echo "<td><a href = '" . base_url('sliders/edit/') . ""
-                        . $sliders[$i]->slider_id . "'><button type='button' class='btn btn-primary'>Edit</button></a>&nbsp;&nbsp;&nbsp;<a href = '" . base_url('sliders/delete/') . ""
-                        . $sliders[$i]->slider_id . "'><button type='button' class='btn btn-danger'>Delete</button></a></td>";
-                    echo "<td><a href = '" . base_url('slides/index/') . "" . $sliders[$i]->slider_id . "'><button type='button' class='btn btn-primary'>slides</button></a></td>";
-                    echo "</tr>";
-                }
-                ?>
+                    $is = count($sliders);
+                    for ($i = 0; $i < $is; $i++) {
+                        echo "<tr>";
+                        echo "<th scope='row'>" . $sliders[$i]->slider_id . "</th>";
+                        echo "<td>" . $sliders[$i]->slider_description . "</td>";
+                        echo "<td>" . $sliders[$i]->slider_status . "</td>";
+                        echo "<td>" . $sliders[$i]->slider_title . "</td>";
+                        echo "<td><a href = '" . base_url('sliders/edit/') . ""
+                            . $sliders[$i]->slider_id . "'><button type='button' class='btn btn-primary'>Edit</button></a>&nbsp;&nbsp;&nbsp;<a href = '" . base_url('sliders/delete/') . ""
+                            . $sliders[$i]->slider_id . "'><button type='button' class='btn btn-danger'>Delete</button></a></td>";
+                        echo "<td><a href = '" . base_url('slides/index/') . "" . $sliders[$i]->slider_id . "'><button type='button' class='btn btn-primary'>slides</button></a></td>";
+                        echo "</tr>";
+                    }
+                    ?>
             </tbody>
 
         </table>
     </div>
 
 </div>
+<?php
+} else {
+    redirect('admin_login');
+}
+?>

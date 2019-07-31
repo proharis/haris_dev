@@ -3,8 +3,22 @@ if (isset($_SESSION['username'])) {
     ?>
 <div class="container">
     <form action="" method="post" enctype="multipart/form-data">
-
-        <div class="form-group">
+        <div>
+            <h2>Slide Type</h2>
+            <div class="form-check ">
+                <label class="form-check-label" for="radio1">
+                    <input checked type="radio" class="form-check-input radioVI" id="radio1" name="optradio"
+                        value="image">Image
+                </label>
+            </div>
+            <div class="form-check ">
+                <label class="form-check-label" for="radio2">
+                    <input type="radio" class="form-check-input radioVI" id="radio2" name="optradio" value="video">Video
+                    Url
+                </label>
+            </div>
+        </div>
+        <div class="form-group image_slide">
             <label for="slide_image">Slide Image</label>
             <input type="file" style="color: red;" class="form-control-file" id="slide_image" name="slide_image">
         </div>
@@ -12,7 +26,7 @@ if (isset($_SESSION['username'])) {
             <label for="slide_title">Slide Title</label>
             <input type="text" class="form-control" id="slide_title" name="slide_title" placeholder="Slide Title">
         </div>
-        <div class="form-group">
+        <div class="form-group video_slide">
             <label for="slide_video">Slide Video</label>
             <input type="text" class="form-control" id="slide_video" name="slide_video"
                 placeholder="Put your URL here"><small id="videoSmall">no submission if url is not valid <a

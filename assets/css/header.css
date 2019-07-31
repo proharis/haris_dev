@@ -343,7 +343,7 @@ a{color:inherit;text-decoration:none}
 .login-html .sign-in,
 .login-html .for-pwd,
 .login-form .group .check{
-	display:none;
+	display:block;
 }
 .login-html .tab,
 .login-form .group .label,
@@ -502,8 +502,8 @@ form input:focus + label, form textarea:focus + label {
 form label {
 	-webkit-transition: background 0.2s, color 0.2s, top 0.2s, bottom 0.2s, right 0.2s, left 0.2s;
 	transition: background 0.2s, color 0.2s, top 0.2s, bottom 0.2s, right 0.2s, left 0.2s;
-	position: absolute;
-	color: #999;
+
+	color: rgb(2, 1, 1);
 	padding: 7px 6px;
 	font-weight: normal;
 }
@@ -541,3 +541,6 @@ form.go-right input:focus + label, form.go-right textarea:focus + label {
 	width: 40%;
 	padding-top: 5px;
 }
+/* .labelForOthers{
+    
+} */

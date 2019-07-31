@@ -58,8 +58,8 @@ class Sliders extends CI_Controller
 
     public function delete()
     {
-        $slider_id = $this->uri->segment('3');
-        $this->db->delete('slider', array('slider_id' => $slider_id));
+
+        $this->db->delete('slider', array('slider_id' => $this->input->post('slider_delete_id')));
         redirect(base_url('sliders'));
     }
 }

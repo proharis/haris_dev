@@ -45,10 +45,10 @@ class Slides extends CI_Controller
                 }
             }
             // Check if file already exists
-            if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
-                $uploadOk = 0;
-            }
+            // if (file_exists($target_file)) {
+            //     echo "Sorry, file already exists.";
+            //     $uploadOk = 0;
+            // }
             // Check file size
             if ($_FILES["slide_image"]["size"] > 500000) {
                 echo "Sorry, your file is too large.";
@@ -60,6 +60,7 @@ class Slides extends CI_Controller
                 && $imageFileType != "gif"
             ) {
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+
                 $uploadOk = 0;
             }
             // Check if $uploadOk is set to 0 by an error
@@ -76,30 +77,47 @@ class Slides extends CI_Controller
                     echo "Sorry, there was an error uploading your file.";
                 }
             }
-            $slide_description = $this->input->post('slide_description');
-            $slide_video = $this->input->post('slide_video');
-            $slide_status = $this->input->post('slide_status');
-            $slide_content = $this->input->post('slide_content');
-            $slide_title = $this->input->post('slide_title');
-            $slide = array(
-                'description' => $slide_description,
-                'video' => $slide_video,
-                'status' => $slide_status,
-                'title' => $slide_title,
-                'content' => $slide_content,
-                'image' => $_FILES["slide_image"]["name"], 'slide_id' => $slide_id
-            );
-            $this->Admin_Login_Model->slide_edit($slide, $slide_id);
+            if ($_FILES["slide_image"]["name"]) {
+                $slide_description = $this->input->post('slide_description');
+                $slide_video = $this->input->post('slide_video');
+                $slide_status = $this->input->post('slide_status');
+                $slide_content = $this->input->post('slide_content');
+                $slide_title = $this->input->post('slide_title');
+                $slide = array(
+                    'description' => $slide_description,
+                    'video' => $slide_video,
+                    'status' => $slide_status,
+                    'title' => $slide_title,
+                    'image' => $_FILES["slide_image"]["name"],
+                    'content' => $slide_content, 'slide_id' => $slide_id,
+                    'slide_type' => $this->input->post('optradio')
+                );
+                $this->Admin_Login_Model->slide_edit($slide, $slide_id);
+            } else {
+                $slide_description = $this->input->post('slide_description');
+                $slide_video = $this->input->post('slide_video');
+                $slide_status = $this->input->post('slide_status');
+                $slide_content = $this->input->post('slide_content');
+                $slide_title = $this->input->post('slide_title');
+                $slide = array(
+                    'description' => $slide_description,
+                    'video' => $slide_video,
+                    'status' => $slide_status,
+                    'title' => $slide_title,
+                    'content' => $slide_content, 'slide_id' => $slide_id,
+                    'slide_type' => $this->input->post('optradio')
+                );
+                $this->Admin_Login_Model->slide_edit($slide, $slide_id);
+            }
+
 
             redirect(base_url('Slides/index/' . $slider_id));
         }
     }
-    public function delete($slide_id = 0, $slider_id = 0)
+    public function delete()
     {
-
-        $this->db->delete('slides', array('slide_id' => $slide_id));
-
-        redirect(base_url('Slides/index/' . $slider_id));
+        $this->db->delete('slides', array('slide_id' => $this->input->post('slide_delete_id')));
+        redirect(base_url('Slides/index/' . $this->input->post('slider_delete_id')));
     }
     public function add($slider_id = 0)
     {
@@ -168,7 +186,8 @@ class Slides extends CI_Controller
                 'status' => $slide_status,
                 'title' => $slide_title,
                 'content' => $slide_content,
-                'image' => $_FILES["slide_image"]["name"], 'slider_id' => $slider_id
+                'image' => $_FILES["slide_image"]["name"], 'slider_id' => $slider_id,
+                'slide_type' => $this->input->post('optradio')
             );
             $this->Admin_Login_Model->slide_add($slide);
 

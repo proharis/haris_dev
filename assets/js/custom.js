@@ -21,6 +21,7 @@ $(document).ready(function () {
         if ($('#slide_video').val().match(p)) {
             $('#videoSubmit').show();
             $('#videoSmall').hide();
+
             submit.form();
         }
         else {
@@ -29,4 +30,5 @@ $(document).ready(function () {
             $('#videoSmall').show();
         }
     });
+
 });

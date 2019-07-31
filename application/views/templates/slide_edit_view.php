@@ -45,6 +45,6 @@ if (isset($_SESSION['username'])) {
 </div>
 <?php
 } else {
-    redirect('admin_login');
+    redirect('admin/index');
 }
 ?>

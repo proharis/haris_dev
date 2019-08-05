@@ -27,6 +27,11 @@ class Admin_Login_Model extends CI_Model
         $this->db->where('slider_id', $slider_id);
         $this->db->update('slider', $data);
     }
+    public function Slider_delete($slider_id)
+    {
+        $this->db->delete('slider', $slider_id);
+        return  $slider_id;
+    }
     public function showSlides($slider_id)
     {
         $query = $this->db->get_where("slides", array("slider_id" => $slider_id));
@@ -51,5 +56,24 @@ class Admin_Login_Model extends CI_Model
     {
         $this->db->where('slide_id', $slide_id);
         $this->db->update('slides', $data);
+    }
+    public function Slide_status($slide_id, $status)
+    {
+        $this->db->where('slide_id', $slide_id);
+        $this->db->update('slides', $status);
+    }
+    public function Slider_status($slider_id, $status)
+    {
+        $this->db->where('slider_id', $slider_id);
+        $this->db->update('slider', $status);
+    }
+    public function countSlides()
+    {
+        // $this->db->from('Slides')->join('Slider', 'Slider.slider_id = Slides.slider_id');
+        $this->db->select('*');
+        $this->db->from('Slides');
+        $this->db->join('Slider', 'Slider.slider_id = Slides.slider_id');
+        $query = $this->db->get();
+        return $query->result();
     }
 }

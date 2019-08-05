@@ -5,6 +5,9 @@
     <html lang="en">
 
     <head data-abc="xyz">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet"
@@ -38,7 +41,10 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php echo base_url() . 'Admin' ?>">Admin Login</a>
-
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Sliders' ?>">Sliders</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Pages' ?>">Pages</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'User' ?>">User Login</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'PageIcon' ?>">Page Icon</a>
                         </div>
                     </li>
                 </ul>

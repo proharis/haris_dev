@@ -1,14 +1,10 @@
-<?php
-if (isset($_SESSION['username'])) {
-    ?>
-
 <div class="row">
     <div class="col-md-5">
         <div class="container">
             <?php
-                $url =  $slides[0]->video;
-                preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches);
-                $embedId = $matches[1]; ?>
+            $url =  $slides[0]->video;
+            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches);
+            $embedId = $matches[1]; ?>
             <form action="" method="post" enctype="multipart/form-data">
                 <div>
                     <h2>Slide Type</h2>
@@ -85,8 +81,3 @@ if (isset($_SESSION['username'])) {
         </div>
     </div>
 </div>
-<?php
-} else {
-    redirect('admin/index');
-}
-?>

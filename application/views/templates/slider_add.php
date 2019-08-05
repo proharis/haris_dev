@@ -1,6 +1,3 @@
-<?php
-if (isset($_SESSION['username'])) {
-    ?>
 <div class="container" style=" background-color: lightsteelblue;">
     <div class="row">
         <form role="form" method="post" action="" class="col-md-9 go-right">
@@ -23,8 +20,3 @@ if (isset($_SESSION['username'])) {
 
     </div>
 </div>
-<?php
-} else {
-    redirect('admin/index');
-}
-?>

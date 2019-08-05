@@ -11,11 +11,30 @@ class Sliders extends CI_Controller
     }
     public function index()
     {
-        $sliders = $this->Admin_Login_Model->showSliders();
-        $data['sliders'] = $sliders;
-        $this->load->view('templates/header_view.php');
-        $this->load->view('templates/sliders.php', $data);
-        $this->load->view('templates/footer_view.php');
+        $this->form_validation->set_rules('slider_delete_id', 'slider_delete_id', 'required');
+        //if delete in post is true
+        if ($this->form_validation->run() == false) {
+            $sliders = $this->Admin_Login_Model->showSliders();
+            $data['CountOfSlides'] =  count($this->Admin_Login_Model->countSlides());;
+            $data['sliders'] = $sliders;
+            $this->load->view('templates/header_view.php');
+            $this->load->view('templates/sliders.php', $data);
+            $this->load->view('templates/footer_view.php');
+        } else {
+            if ($this->input->post('deactivate') == 'deactivate') {
+                $status = array('slider_status' => 0);
+                $this->Admin_Login_Model->Slider_status($this->input->post('slider_delete_id'),  $status);
+                redirect(base_url('sliders'));
+            } else if ($this->input->post('activate') == 'activate') {
+                $status = array('slider_status' => 1);
+                $this->Admin_Login_Model->Slider_status($this->input->post('slider_delete_id'),  $status);
+                redirect(base_url('sliders'));
+            } else {
+                $id = array('slider_id' => $this->input->post('slider_delete_id'));
+                $this->Admin_Login_Model->Slider_delete($id);
+                redirect(base_url('sliders'));
+            }
+        }
     }
     public function add()
     {
@@ -56,10 +75,8 @@ class Sliders extends CI_Controller
         }
     }
 
-    public function delete()
-    {
-
-        $this->db->delete('slider', array('slider_id' => $this->input->post('slider_delete_id')));
-        redirect(base_url('sliders'));
-    }
+    // public function delete()
+    // {
+    //     
+    // }
 }

@@ -1,6 +1,3 @@
-<?php
-if (isset($_SESSION['username'])) {
-    ?>
 <div class="container">
     <form action="" method="post" enctype="multipart/form-data">
         <div>
@@ -53,8 +50,3 @@ if (isset($_SESSION['username'])) {
             value="submit" name="Submit">
     </form>
 </div>
-<?php
-} else {
-    redirect('admin/admin_login');
-}
-?>

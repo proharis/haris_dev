@@ -148,14 +148,14 @@ class PageIcon extends CI_Controller
                 $this->load->view('templates/footer_view.php');
             } else {
                 $Title = $this->input->post('Title');
-                $gmail = "mailto:" . $this->input->post('gmail');
+                $gmail = $this->input->post('gmail');
                 $facebook = $this->input->post('facebook');
-                $instagram = " http://www.instagram.com/" . $this->input->post('instagram');
-                $snapchat = "https://www.snapchat.com/add/" . $this->input->post('snapchat');
-                $skype = "skype:" . $this->input->post('skype') . "?chat";
+                $instagram = $this->input->post('instagram');
+                $snapchat = $this->input->post('snapchat');
+                $skype = $this->input->post('skype');
                 $slack = $this->input->post('slack');
-                $linkedin = "http://ca.linkedin.com/in/linkedin" . $this->input->post('linkedin');
-                $whatsapp = "https://wa.me/92" . $this->input->post('whatsapp');
+                $linkedin = $this->input->post('linkedin');
+                $whatsapp = $this->input->post('whatsapp');
                 $data = array(
                     'title' => $Title,
                     'gmail' => $gmail,

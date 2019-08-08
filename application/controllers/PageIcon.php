@@ -10,6 +10,7 @@ class PageIcon extends CI_Controller
     public function index()
     {
         $res =  $this->Icons_Model->icons();
+        $enable =  $this->Icons_Model->enable();
         $result['data'] = $res;
         if (empty($res)) {
             // $this->form_validation->set_rules('favicon', 'favicon', 'required');
@@ -131,23 +132,21 @@ class PageIcon extends CI_Controller
                 redirect(base_url('PageIcon'));
             }
         } else {
-            // $this->form_validation->set_rules('favicon', 'favicon', 'required');
-            $this->form_validation->set_rules('Title', 'Title', 'required');
-            // $this->form_validation->set_rules('logo', 'logo', 'required');
-            $this->form_validation->set_rules('gmail', 'gmail', 'required');
-            $this->form_validation->set_rules('facebook', 'facebook', 'required');
-            $this->form_validation->set_rules('instagram', 'instagram', 'required');
-            $this->form_validation->set_rules('snapchat', 'snapchat', 'required');
-            $this->form_validation->set_rules('skype', 'skype', 'required');
-            $this->form_validation->set_rules('slack', 'slack', 'required');
-            $this->form_validation->set_rules('linkedin', 'linkedin', 'required');
-            $this->form_validation->set_rules('whatsapp', 'whatsapp', 'required');
+
+            foreach ($_POST as $key => $value) {
+                if ($key) {
+                    $this->form_validation->set_rules($key, $key, 'required');
+                }
+            }
+
             if ($this->form_validation->run() == false) {
                 $this->load->view('templates/header_view.php');
                 $this->load->view('templates/pageIconAdd.php', $result);
                 $this->load->view('templates/footer_view.php');
             } else {
-                $Title = $this->input->post('Title');
+
+
+                $Title = $this->input->post('title');
                 $gmail = $this->input->post('gmail');
                 $facebook = $this->input->post('facebook');
                 $instagram = $this->input->post('instagram');
@@ -156,17 +155,40 @@ class PageIcon extends CI_Controller
                 $slack = $this->input->post('slack');
                 $linkedin = $this->input->post('linkedin');
                 $whatsapp = $this->input->post('whatsapp');
-                $data = array(
-                    'title' => $Title,
-                    'gmail' => $gmail,
-                    'facebook' => $facebook,
-                    'instagram' => $instagram,
-                    'skype' => $skype,
-                    'snapchat' => $snapchat,
-                    'slack' => $slack,
-                    'linkedin' => $linkedin,
-                    'whatsapp' => $whatsapp
-                );
+                $data = array();
+                if (!empty($gmail)) {
+                    $data['gmail'] = $gmail;
+                }
+                if (!empty($facebook)) {
+                    $data['facebook'] = $facebook;
+                }
+                if (!empty($whatsapp)) {
+                    $data['whatsapp'] = $whatsapp;
+                }
+                if (!empty($instagram)) {
+                    $data['instagram'] = $instagram;
+                }
+                if (!empty($snapchat)) {
+                    $data['snapchat'] = $snapchat;
+                }
+                if (!empty($skype)) {
+                    $data['skype'] = $skype;
+                }
+                if (!empty($slack)) {
+                    $data['slack'] = $slack;
+                }
+                if (!empty($linkedin)) {
+                    $data['linkedin'] = $linkedin;
+                }
+                $data['facebook_enable'] = $this->input->post('facebook_enable');
+                $data['instagram_enable'] = $this->input->post('instagram_enable');
+                $data['snapchat_enable'] = $this->input->post('snapchat_enable');
+                $data['skype_enable'] = $this->input->post('skype_enable');
+                $data['linkedin_enable'] = $this->input->post('linkedin_enable');
+                $data['slack_enable'] = $this->input->post('slack_enable');
+                $data['whatsapp_enable'] = $this->input->post('whatsapp_enable');
+                $data['gmail_enable'] = $this->input->post('gmail_enable');
+
                 if ($_FILES["favicon"]["name"]) {
                     $target_dir = "C:/xampp/htdocs/haris/assets/image/";
                     $target_file = $target_dir . basename($_FILES["favicon"]["name"]);

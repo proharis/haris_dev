@@ -671,3 +671,10 @@ form.go-right input:focus + label, form.go-right textarea:focus + label {
 .btn-primary{
     background-color: #1161ee !important;
 }
+.checkIcon{
+        margin-top: 12%;
+
+}
+.checkIcon1{
+                top: auto;
+}

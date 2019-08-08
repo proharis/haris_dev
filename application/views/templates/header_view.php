@@ -45,6 +45,26 @@
                             <a class="dropdown-item" href="<?php echo base_url() . 'Pages' ?>">Pages</a>
                             <a class="dropdown-item" href="<?php echo base_url() . 'User' ?>">User Login</a>
                             <a class="dropdown-item" href="<?php echo base_url() . 'PageIcon' ?>">Page Icon</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'ExpandFormula' ?>">Expand
+                                Formula</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'TableCounter' ?>">Table of</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Pathygoras' ?>">pythagoras theorem
+                                calculator</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Users
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Users_controller' ?>">Users</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Todos_controller' ?>">Todos</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Posts_controller' ?>">Posts</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Photos_controller' ?>">Photos</a>
+                            <a class="dropdown-item" href="<?php echo base_url() . 'Album_controller' ?>">Album</a>
+                            <a class="dropdown-item"
+                                href="<?php echo base_url() . 'Comments_controller' ?>">Comments</a>
                         </div>
                     </li>
                 </ul>

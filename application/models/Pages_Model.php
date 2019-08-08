@@ -6,10 +6,8 @@ class Pages_Model extends CI_Model
         if ($page['status'] == "") {
             $page['status'] = '0';
             $this->db->insert('pages', $page);
-            die();
         } else {
             $this->db->insert('pages', $page);
-            die();
         }
         return;
     }

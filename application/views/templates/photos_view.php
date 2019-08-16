@@ -1,36 +1,27 @@
+<div class="row">
+    <div class="col-sm-2">
+        <form action="<?php echo base_url('Album_controller') ?>" method="post"><input type="hidden" name="userId"
+                value="<?php echo $albumId ?>"><input style="background-color:#dc3545;" type="submit"
+                value="Go Back To Albums" class="btn btn-danger">
+        </form>
+    </div>
+</div>
 <div class="container">
-
-    <?php
-    // echo "<pre>";
-    // print_r($users);
-    // die(); 
-    ?>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Url</th>
-                    <th scope="col">Thumnail URL</th>
-                    <th scope="col">Album ID</th>
-                </tr>
-            </thead>
-            <?php
-            $total_users = count($users);
-            for ($i = 0; $i < $total_users; $i++) {
-                echo "<tr>";
-                echo "<td>" . $users[$i]->id . "</td>";
-                echo "<td>" . $users[$i]->title . "</td>";
-                echo "<td>" . $users[$i]->url . "</td>";
-                echo "<td>" . $users[$i]->thumbnailUrl . "</td>";
-                echo "<td>" . $users[$i]->albumId . "</td>";
-                echo "</tr>";
-            }
-            ?>
-            <tbody>
-
-            </tbody>
-        </table>
+    <div class="row">
+        <?php
+        $total_users = count($users);
+        for ($i = 0; $i < $total_users; $i++) {
+            echo '<div class="col-md-4">';
+            echo '<div class="thumbnail">';
+            echo '<a href="' . $users[$i]->url  . '" target="_blank">';
+            echo '<img class="card-img-top img-fluid" src="' . $users[$i]->thumbnailUrl  . '" alt="Card image cap">';
+            echo '<div class="caption">';
+            echo '<p>Captions: ' . $users[$i]->title . '</p>';
+            echo '</div>';
+            echo '</a>';
+            echo '</div>';
+            echo '</div>'; //card mb-4
+        }
+        ?>
     </div>
 </div>

@@ -9,7 +9,9 @@ class Comments_controller extends CI_Controller
     }
     public function index()
     {
-        $data['users'] = $this->Api_Model->show_comments();
+        $data['post_id'] = $this->input->post('postId');
+        $user_id = $this->input->post('postId');
+        $data['users'] = $this->Api_Model->post_comments($user_id);
         $this->load->view('templates/header_view.php');
         $this->load->view('templates/comment_view.php', $data);
         $this->load->view('templates/footer_view.php');

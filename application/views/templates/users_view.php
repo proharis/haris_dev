@@ -15,6 +15,9 @@
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Website</th>
+                    <th scope="col">Todos</th>
+                    <th scope="col">Posts</th>
+                    <th scope="col">Albums</th>
                 </tr>
             </thead>
             <?php
@@ -27,6 +30,9 @@
                 echo "<td>" . $users[$i]->email . "</td>";
                 echo "<td>" . $users[$i]->phone . "</td>";
                 echo "<td>" . $users[$i]->website . "</td>";
+                echo "<td><form action='" . base_url('Todos_controller') . "' method='post'><input type='hidden' name='userId' value='" . $users[$i]->id . "'><input type='submit' class='btn btn-primary' name='todos' value='Todos'></form></td>";
+                echo "<td><form action='" . base_url('Posts_controller') . "' method='post'><input type='hidden' name='userId' value='" . $users[$i]->id . "'><input type='submit' class='btn btn-primary' name='posts' value='Posts'></form></td>";
+                echo "<td><form action='" . base_url('Album_controller') . "' method='post'><input type='hidden' name='userId' value='" . $users[$i]->id . "'><input type='submit' class='btn btn-primary' name='album' value='Albums'></form></td>";
                 echo "</tr>";
             }
             ?>
@@ -34,5 +40,6 @@
 
             </tbody>
         </table>
+
     </div>
 </div>

@@ -281,7 +281,7 @@ a:hover, a:active {
 .feature .feature-box .feature-content p {
     color: #606060;
     font-size: 13px;
-    line-height: 22px;
+    /* line-height: 22px; */
 }
 .icon {
     color : #f4b841;

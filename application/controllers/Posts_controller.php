@@ -9,7 +9,8 @@ class Posts_controller extends CI_Controller
     }
     public function index()
     {
-        $data['users'] = $this->Api_Model->show_post();
+        $user_id = $this->input->post('userId');
+        $data['users'] = $this->Api_Model->user_post($user_id);
         $this->load->view('templates/header_view.php');
         $this->load->view('templates/post_view.php', $data);
         $this->load->view('templates/footer_view.php');

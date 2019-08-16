@@ -9,7 +9,8 @@ class Album_controller extends CI_Controller
     }
     public function index()
     {
-        $data['users'] = $this->Api_Model->show_albums();
+        $user_id = $this->input->post('userId');
+        $data['users'] = $this->Api_Model->user_albums($user_id);
         $this->load->view('templates/header_view.php');
         $this->load->view('templates/album_view.php', $data);
         $this->load->view('templates/footer_view.php');

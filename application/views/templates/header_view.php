@@ -59,12 +59,6 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?php echo base_url() . 'Users_controller' ?>">Users</a>
-                            <a class="dropdown-item" href="<?php echo base_url() . 'Todos_controller' ?>">Todos</a>
-                            <a class="dropdown-item" href="<?php echo base_url() . 'Posts_controller' ?>">Posts</a>
-                            <a class="dropdown-item" href="<?php echo base_url() . 'Photos_controller' ?>">Photos</a>
-                            <a class="dropdown-item" href="<?php echo base_url() . 'Album_controller' ?>">Album</a>
-                            <a class="dropdown-item"
-                                href="<?php echo base_url() . 'Comments_controller' ?>">Comments</a>
                         </div>
                     </li>
                 </ul>

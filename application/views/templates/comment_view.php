@@ -1,10 +1,13 @@
+<div class="row">
+    <div class="col-sm-2">
+        <form action="<?php echo base_url('Posts_controller') ?>" method="post"><input type="hidden" name="userId"
+                value="<?php echo $post_id ?>"><input style="background-color:#dc3545;" type="submit"
+                value="Go Back To Posts" class="btn btn-danger">
+        </form>
+    </div>
+</div>
 <div class="container">
 
-    <?php
-    // echo "<pre>";
-    // print_r($users);
-    // die(); 
-    ?>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -13,7 +16,6 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Body</th>
-                    <th scope="col">Post ID</th>
                 </tr>
             </thead>
             <?php
@@ -24,7 +26,6 @@
                 echo "<td>" . $users[$i]->name . "</td>";
                 echo "<td>" . $users[$i]->email . "</td>";
                 echo "<td>" . $users[$i]->body . "</td>";
-                echo "<td>" . $users[$i]->postId . "</td>";
                 echo "</tr>";
             }
             ?>
